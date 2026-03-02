@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './roomInterface';
 import {RoomListComponent} from './room-list/room-list';
+import { Header } from "../header/header";
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomListComponent ],
+  imports: [RoomListComponent, Header],
   templateUrl: './rooms.html',
   styleUrl: './rooms.scss',
 })
-export class Rooms implements OnInit{
+export class Rooms implements OnInit, AfterViewInit{
 
 
   hideRooms = false;
@@ -24,8 +25,12 @@ export class Rooms implements OnInit{
 
  roomList : RoomList [] =[] ;
 
- 
+ @ViewChild(Header, {static: true}) header !: Header;
   constructor(){}
+
+  ngAfterViewInit(): void {
+    console.log(this.header);
+  }
 
 
   ngOnInit(): void {
