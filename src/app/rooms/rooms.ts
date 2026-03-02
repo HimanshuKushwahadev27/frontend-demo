@@ -65,4 +65,16 @@ export class Rooms implements OnInit{
     console.log(room);
   }
 
+  addRoom(){
+    const room : RoomList ={
+    roomType: 'Starlight Suite',
+    amenities: 'AC, WiFi, TV, Mini Bar, Bathtub, personal Service',
+    price: 45000,
+    photos: 'https://picsum.photos/200/300?random=2',
+    checkInTime: new Date('2026-02-12T12:00:00'),
+    checkOutTime: new Date('2026-02-13T11:00:00')
+    }
+
+    this.roomList = [...this.roomList, room];
+  }
 }
