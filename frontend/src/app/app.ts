@@ -4,10 +4,11 @@ import { EphemeralKeyInfo } from 'tls';
 import { ɵEmptyOutletComponent } from "@angular/router";
 import { Container } from "./container/container";
 import { Employee } from "./employee/employee";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [Rooms, ɵEmptyOutletComponent, Container, Employee],
+  imports: [Rooms, Container, Employee],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

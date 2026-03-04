@@ -5,10 +5,8 @@
   <div [innerText]="hotelRooms"></div>
 </div>
 
-<div>
-  <button (click)="addRoom()">Add Room</button>
-</div>
-
 <app-room-list  [rooms] = "roomList"
 (selectedRooms)="selectRoom($event)"></app-room-list>
 <button (click)="toggle()">Toggle</button>
+
+<h1>{{totalBytes}}</h1>

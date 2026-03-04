@@ -1,3 +1,5 @@
+import { UUID } from "crypto";
+
 export interface Room{
   totalRooms: number;
  availabeRooms: number;
@@ -5,6 +7,7 @@ export interface Room{
 }
 
 export interface RoomList{
+  id: UUID;
   roomType : string;
   amenities : string;
   price : number;
