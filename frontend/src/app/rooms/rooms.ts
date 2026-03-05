@@ -1,15 +1,16 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './roomInterface';
 import {RoomListComponent} from './room-list/room-list';
 import { Header } from "../header/header";
 import { RoomsService } from './services/rooms';
 import { randomUUID } from 'crypto';
 import { HttpEventType } from '@angular/common/http';
-
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { catchError, of, Subject } from 'rxjs';
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomListComponent, Header],
+  imports: [RoomListComponent, Header, AsyncPipe, JsonPipe],
   templateUrl: './rooms.html',
   styleUrl: './rooms.scss',
 })
@@ -26,13 +27,20 @@ export class Rooms implements OnInit, AfterViewInit{
     bookedRooms: 5
   }
 
- roomList : RoomList [] =[] ;
+
+ roomList : RoomList []  =[] ;
 
  @ViewChild(Header, {static: true}) header !: Header;
 
  //DI
-  constructor(private roomService : RoomsService){
-  }
+  roomService = inject(RoomsService);
+  error$ = new Subject<string>;
+  getError$ = this.error$.asObservable();
+
+  rooms$ = this.roomService.getRooms$.pipe(catchError((err) => {
+    this.error$.next(err.message);
+    return of([]);
+  }));
 
   ngAfterViewInit(): void {
     console.log(this.header);
@@ -59,9 +67,9 @@ export class Rooms implements OnInit, AfterViewInit{
           }
         }
       });
-       this.roomService.getRooms().subscribe(rooms => {
-        this.roomList = rooms;
-      });
+      //  this.roomService.getRooms$.subscribe(rooms => {
+      //   this.roomList = rooms;
+      // });
     }
 
   toggle(){

@@ -4,8 +4,10 @@
   Number of Rooms:
   <div [innerText]="hotelRooms"></div>
 </div>
-
-<app-room-list  [rooms] = "roomList"
+<h1>
+  {{getError$ | async}}
+</h1>
+<app-room-list  [rooms] = "(rooms$ | async) ?? []" 
 (selectedRooms)="selectRoom($event)"></app-room-list>
 <button (click)="toggle()">Toggle</button>
 

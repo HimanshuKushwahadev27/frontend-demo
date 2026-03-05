@@ -1,14 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { RoomList } from '../roomInterface';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoomsService {
+
+    // private headers = new HttpHeaders({'token': '1u310941041-49-12'});
+    private http = inject(HttpClient);
+    getRooms$ = this.http.get<RoomList[]>('/api/rooms/get').pipe(shareReplay(1));
+
   
-  constructor(private http : HttpClient){}
   roomList : RoomList [] =[] ;
+
 
   getRooms(){
     return this.http.get<RoomList[]>('/api/rooms/get');
