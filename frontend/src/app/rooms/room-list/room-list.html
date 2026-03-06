@@ -7,9 +7,9 @@
           <th>Room Type</th>
           <th>Room Amenities</th>
           <th>Room Price</th>
-          <th>Checkin Time</th>
+          <th>Checkout Time</th>
           <th>Ratings</th>
-           <th>Book Room</th>
+          <th>Book Room</th>
         </tr>
       
       @for (room of rooms; track $index; let e=$even; let o=$odd) {
@@ -18,7 +18,7 @@
           <td>{{room.roomType}}</td>
           <td>{{room.amenities}}</td>
           <td>{{room.price}}</td>
-          <td>{{room.checkInTime | date}}</td>
+          <td>{{room.checkOutTime}}</td>
           <td>{{room.ratings}}</td>
           <td>
             <!-- <button  

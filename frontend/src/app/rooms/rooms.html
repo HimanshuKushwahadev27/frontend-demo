@@ -7,8 +7,10 @@
 <h1>
   {{getError$ | async}}
 </h1>
-<app-room-list  [rooms] = "(rooms$ | async) ?? []" 
-(selectedRooms)="selectRoom($event)"></app-room-list>
+<app-room-show  [rooms] = "(rooms$ | async) ?? []" 
+(selectedRooms)="selectRoom($event)"></app-room-show>
 <button (click)="toggle()">Toggle</button>
 
 <h1>{{totalBytes}}</h1>
+
+<router-outlet></router-outlet>

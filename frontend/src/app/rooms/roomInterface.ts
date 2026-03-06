@@ -16,6 +16,13 @@ export interface RoomList{
   ratings : number;
 }
 
-export interface RoomCreate{
-
+export interface RoomShow{
+  id ?: UUID;
+  roomType : string;
+  amenities : string;
+  price : number;
+  photos: string;
+  checkOutTime: Date;
+  checkInTime: Date;
+  ratings : number;
 }

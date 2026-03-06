@@ -7,10 +7,11 @@ import { RoomsCreate } from './rooms/rooms-create/rooms-create';
 
 
 export const routes: Routes = [
+    {path: 'rooms/create', component: RoomsCreate},
   {path : 'employee', component: Employee},
-  {path: 'rooms', component: Rooms},
-  {path: 'rooms/create', component: RoomsCreate},
-  {path: 'rooms/:id', component: RoomBooking},
+  {path: 'rooms', component: Rooms, children: [
+       {path: ':id', component: RoomBooking}
+  ]},
   {path : '', redirectTo: '/rooms', pathMatch: 'full'},
   { path: '**', component: Notfound }
 ];

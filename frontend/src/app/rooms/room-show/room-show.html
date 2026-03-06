@@ -1,0 +1,42 @@
+<p>room-show works!</p>
+<div>
+    Rooms List:
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Even/Odd</th>
+          <th>Room Type</th>
+          <th>Room Amenities</th>
+          <th>Room Price</th>
+          <th>Checkout Time</th>
+          <th>Checkin Time</th>
+          <th>Ratings</th>
+          <th>Book Room</th>
+        </tr>
+      
+      @for (room of rooms; track $index; let e=$even; let o=$odd) {
+        <tr>
+          <td>{{e ? 'Even' : 'Odd'}}</td>
+          <td>{{room.roomType}}</td>
+          <td>{{room.amenities}}</td>
+          <td>{{room.price}}</td>
+          <td>{{room.checkOutTime}}</td>
+          <td>{{room.checkInTime}}</td>
+          <td>{{room.ratings}}</td>
+          <td>
+            <!-- <button  
+              class = "btn btn-primary"
+              (click) = "selectRooms(room)">
+              Select
+            </button> -->
+            <button 
+            class = "btn btn-primary"
+             [routerLink] ="['/rooms', room.id]">
+             Book Room
+            </button>
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>

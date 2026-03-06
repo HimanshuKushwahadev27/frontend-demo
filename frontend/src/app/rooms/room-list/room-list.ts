@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { RoomList} from '../roomInterface';
+import {  RoomList} from '../roomInterface';
 import { DatePipe } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';

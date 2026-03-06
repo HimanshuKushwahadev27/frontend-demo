@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
-import { Room, RoomList } from './roomInterface';
-import {RoomListComponent} from './room-list/room-list';
+import { Room, RoomShow } from './roomInterface';
 import { Header } from "../header/header";
 import { RoomsService } from './services/rooms';
-import { randomUUID } from 'crypto';
 import { HttpEventType } from '@angular/common/http';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { catchError, of, Subject } from 'rxjs';
+import { RoomShowComponent } from './room-show/room-show';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomListComponent, Header, AsyncPipe, JsonPipe],
+  imports: [RoomShowComponent, Header, AsyncPipe, RouterOutlet],
   templateUrl: './rooms.html',
   styleUrl: './rooms.scss',
 })
@@ -28,7 +28,7 @@ export class Rooms implements OnInit, AfterViewInit{
   }
 
 
- roomList : RoomList []  =[] ;
+ roomShow : RoomShow []  =[] ;
 
  @ViewChild(Header, {static: true}) header !: Header;
 
@@ -76,7 +76,7 @@ export class Rooms implements OnInit, AfterViewInit{
     this.hideRooms = !this.hideRooms
   }
 
-  selectRoom(room: RoomList){
+  selectRoom(room: RoomShow){
     console.log(room);
   }
 
