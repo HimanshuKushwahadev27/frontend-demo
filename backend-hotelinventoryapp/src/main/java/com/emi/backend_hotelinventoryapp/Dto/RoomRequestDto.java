@@ -10,7 +10,6 @@ BigDecimal price,
 String url,
 Instant checkOutTime,
 Integer ratings
-
 ) {
   
 }

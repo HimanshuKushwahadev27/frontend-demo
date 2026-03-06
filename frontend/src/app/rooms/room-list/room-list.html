@@ -8,7 +8,8 @@
           <th>Room Amenities</th>
           <th>Room Price</th>
           <th>Checkin Time</th>
-          <th>Select Room</th>
+          <th>Ratings</th>
+           <th>Book Room</th>
         </tr>
       
       @for (room of rooms; track $index; let e=$even; let o=$odd) {
@@ -18,11 +19,17 @@
           <td>{{room.amenities}}</td>
           <td>{{room.price}}</td>
           <td>{{room.checkInTime | date}}</td>
+          <td>{{room.ratings}}</td>
           <td>
-            <button  
+            <!-- <button  
               class = "btn btn-primary"
               (click) = "selectRooms(room)">
               Select
+            </button> -->
+            <button 
+            class = "btn btn-primary"
+             [routerLink] ="['/rooms', room.id]">
+             Book Room
             </button>
           </td>
         </tr>

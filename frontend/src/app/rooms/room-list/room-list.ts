@@ -3,11 +3,12 @@ import { RoomList} from '../roomInterface';
 import { DatePipe } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-room-list',
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, RouterLink],
   templateUrl: './room-list.html',
   styleUrl: './room-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

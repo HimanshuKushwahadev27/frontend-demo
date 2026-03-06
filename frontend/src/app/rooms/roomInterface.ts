@@ -7,11 +7,15 @@ export interface Room{
 }
 
 export interface RoomList{
-  id: UUID;
+  id ?: UUID;
   roomType : string;
   amenities : string;
   price : number;
   photos: string;
-  checkInTime: Date;
-  checkOutTime: Date;
+  checkOutTime: string;
+  ratings : number;
+}
+
+export interface RoomCreate{
+
 }

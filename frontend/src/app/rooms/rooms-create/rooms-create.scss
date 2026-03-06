@@ -1,0 +1,20 @@
+.rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-stars mat-icon {
+  font-size: 32px;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+}
+
+.rating-stars mat-icon.active {
+  color: #ffb400;
+}
+.img-preview {
+  max-width: 250px;
+  margin-top: 10px;
+}
